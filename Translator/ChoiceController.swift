@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChoiceController.swift
 //  Translator
 //
 //  Created by Saturn Karry on 5/21/21.
@@ -8,23 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChoiceController: UIViewController {
 
-    @IBOutlet weak var firstLanguageButton: UIButton!
-    @IBOutlet weak var secondLanguageButton: UIButton!
+    @IBOutlet weak var currentLanguageLable: UILabel!
+    @IBOutlet weak var topLanguage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
     }
     
 
-    @IBAction func changeButton() {
-        let firstText = firstLanguageButton.titleLabel?.text
-        firstLanguageButton.setTitle(secondLanguageButton.titleLabel?.text, for: .normal)
-        secondLanguageButton.setTitle(firstText, for: .normal)
-    }
     /*
     // MARK: - Navigation
 

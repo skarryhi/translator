@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE02657F045001594D4 /* ViewController.swift */; };
+		FA7E0AE32657F242001594D4 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE22657F242001594D4 /* Languages.swift */; };
+		FACD605C265801FD00C29198 /* ChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD605B265801FD00C29198 /* ChoiceController.swift */; };
 		FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F52654330E008453F3 /* AppDelegate.swift */; };
 		FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F72654330E008453F3 /* SceneDelegate.swift */; };
-		FADC82FA2654330E008453F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F92654330E008453F3 /* ViewController.swift */; };
 		FADC82FD2654330E008453F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADC82FB2654330E008453F3 /* Main.storyboard */; };
 		FADC83002654330E008453F3 /* Translator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FADC82FE2654330E008453F3 /* Translator.xcdatamodeld */; };
 		FADC83022654330F008453F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FADC83012654330F008453F3 /* Assets.xcassets */; };
@@ -17,10 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA7E0AE02657F045001594D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA7E0AE22657F242001594D4 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		FACD605B265801FD00C29198 /* ChoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceController.swift; sourceTree = "<group>"; };
 		FADC82F22654330E008453F3 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADC82F52654330E008453F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FADC82F72654330E008453F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FADC82F92654330E008453F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FADC82FC2654330E008453F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FADC82FF2654330E008453F3 /* Translator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Translator.xcdatamodel; sourceTree = "<group>"; };
 		FADC83012654330F008453F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,9 +64,11 @@
 			children = (
 				FADC82F52654330E008453F3 /* AppDelegate.swift */,
 				FADC82F72654330E008453F3 /* SceneDelegate.swift */,
-				FADC82F92654330E008453F3 /* ViewController.swift */,
-				FADC82FB2654330E008453F3 /* Main.storyboard */,
+				FA7E0AE22657F242001594D4 /* Languages.swift */,
+				FACD605B265801FD00C29198 /* ChoiceController.swift */,
+				FA7E0AE02657F045001594D4 /* ViewController.swift */,
 				FADC83012654330F008453F3 /* Assets.xcassets */,
+				FADC82FB2654330E008453F3 /* Main.storyboard */,
 				FADC83032654330F008453F3 /* LaunchScreen.storyboard */,
 				FADC83062654330F008453F3 /* Info.plist */,
 				FADC82FE2654330E008453F3 /* Translator.xcdatamodeld */,
@@ -141,10 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FADC82FA2654330E008453F3 /* ViewController.swift in Sources */,
+				FACD605C265801FD00C29198 /* ChoiceController.swift in Sources */,
 				FADC83002654330E008453F3 /* Translator.xcdatamodeld in Sources */,
 				FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */,
+				FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
+				FA7E0AE32657F242001594D4 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
