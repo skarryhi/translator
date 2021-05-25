@@ -8,31 +8,47 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
-    @IBOutlet weak var firstLanguageButton: UIButton!
-    @IBOutlet weak var secondLanguageButton: UIButton!
+    var currentLanguages = Languages()
+    
+    @IBOutlet weak var sourseLanguageButton: UIButton!
+    @IBOutlet weak var resultLanguageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setButtonsLanguages()
     }
     
 
     @IBAction func changeButton() {
-        let firstText = firstLanguageButton.titleLabel?.text
-        firstLanguageButton.setTitle(secondLanguageButton.titleLabel?.text, for: .normal)
-        secondLanguageButton.setTitle(firstText, for: .normal)
+        currentLanguages.swipe()
+        setButtonsLanguages()
     }
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func save(_ unwindSegue: UIStoryboardSegue) {
     }
-    */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? ChoiceController,
+              let button = sender as? UIButton
+        else { return }
+        if button.titleLabel?.text == currentLanguages.sourseLanguageText {
+            vc.segueType = "leftButton"
+        } else {
+            vc.segueType = "rightButton"
+        }
+        vc.currentLanguages = self.currentLanguages
+    }
+    
+
+    private func setButtonsLanguages() {
+        sourseLanguageButton.setTitle(currentLanguages.sourseLanguageText, for: .normal)
+        resultLanguageButton.setTitle(currentLanguages.resultLanguageText, for: .normal)
+    }
 }
