@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE02657F045001594D4 /* ViewController.swift */; };
 		FA7E0AE32657F242001594D4 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE22657F242001594D4 /* Languages.swift */; };
+		FAB3DD8E26626552009D37FD /* StructResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3DD8D26626552009D37FD /* StructResponse.swift */; };
 		FACD605C265801FD00C29198 /* ChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD605B265801FD00C29198 /* ChoiceController.swift */; };
 		FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F52654330E008453F3 /* AppDelegate.swift */; };
 		FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F72654330E008453F3 /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		FA7E0AE02657F045001594D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA7E0AE22657F242001594D4 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		FAB3DD8D26626552009D37FD /* StructResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructResponse.swift; sourceTree = "<group>"; };
 		FACD605B265801FD00C29198 /* ChoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceController.swift; sourceTree = "<group>"; };
 		FADC82F22654330E008453F3 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FADC82F52654330E008453F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				FADC82F52654330E008453F3 /* AppDelegate.swift */,
 				FADC82F72654330E008453F3 /* SceneDelegate.swift */,
+				FAB3DD8D26626552009D37FD /* StructResponse.swift */,
 				FA7E0AE22657F242001594D4 /* Languages.swift */,
 				FACD605B265801FD00C29198 /* ChoiceController.swift */,
 				FA7E0AE02657F045001594D4 /* ViewController.swift */,
@@ -149,6 +152,7 @@
 			files = (
 				FACD605C265801FD00C29198 /* ChoiceController.swift in Sources */,
 				FADC83002654330E008453F3 /* Translator.xcdatamodeld in Sources */,
+				FAB3DD8E26626552009D37FD /* StructResponse.swift in Sources */,
 				FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */,
 				FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
