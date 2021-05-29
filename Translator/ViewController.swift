@@ -68,12 +68,14 @@ class ViewController: UIViewController {
         let parameters = [
             "folder_id" : "b1gllin8jcku7jtu772i",
             "texts" : [textField.text],
-            "targetLanguageCode" : "ru"
+            "sourceLanguageCode" : self.currentLanguages.sourseLanguageISO,
+            "targetLanguageCode" : self.currentLanguages.resultLanguageISO
             ] as [String : Any]
         guard let json = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
             print("ERROR JSON")
             return
         }
+        print(self.currentLanguages.resultLanguageISO)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -86,6 +88,13 @@ class ViewController: UIViewController {
             guard let data = data else {
                 print("NO HAVE DATA")
                 return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print (error)
+            }
             
             if let jsonResult = try? JSONDecoder().decode(Translations.self, from: data) {
                 DispatchQueue.main.async {

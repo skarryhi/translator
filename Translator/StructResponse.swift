@@ -9,7 +9,6 @@
 import Foundation
 
 struct Result: Codable {
-    var detectedLanguageCode : String
     var text : String
 }
 

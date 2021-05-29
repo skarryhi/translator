@@ -13,20 +13,25 @@ class Languages {
     var sourseLanguage: Language {
         didSet {
             sourseLanguageText = getTextLanguage(language: self.sourseLanguage)
+            sourseLanguageISO = getISOLanguage(language: self.sourseLanguage)
         }
     }
     var resultLanguage: Language {
         didSet {
             resultLanguageText = getTextLanguage(language: self.resultLanguage)
+            resultLanguageISO = getISOLanguage(language: self.resultLanguage)
         }
     }
     
     var sourseLanguageText: String = "English"
-    var resultLanguageText: String = "Russian"
+    var resultLanguageText: String = "Spanish"
+    
+    var sourseLanguageISO: String = "en"
+    var resultLanguageISO: String = "es"
     
     init() {
         sourseLanguage = .english
-        resultLanguage = .russian
+        resultLanguage = .spanish
     }
     
     
@@ -38,6 +43,17 @@ class Languages {
             return "Russian"
         case .spanish:
             return "Spanish"
+        }
+    }
+    
+    private func getISOLanguage(language: Language) -> String {
+        switch language {
+        case .english:
+            return "en"
+        case .russian:
+            return "ru"
+        case .spanish:
+            return "es"
         }
     }
     
