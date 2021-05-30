@@ -148,6 +148,7 @@
                     <connections>
                         <outlet property="resultLanguageButton" destination="oQM-vd-Ni5" id="8Hd-FD-aJc"/>
                         <outlet property="sourseLanguageButton" destination="hnS-mR-ou0" id="UM0-Vn-CTs"/>
+                        <outlet property="textFieldOutlet" destination="Qvo-Nc-rPb" id="dvV-yD-374"/>
                         <outlet property="translatedTaxtLable" destination="rJH-JS-lGu" id="gZC-W2-0vB"/>
                     </connections>
                 </viewController>

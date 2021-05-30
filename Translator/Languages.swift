@@ -12,8 +12,8 @@ class Languages {
 
     var sourseLanguage: Language {
         didSet {
-            sourseLanguageText = getTextLanguage(language: self.sourseLanguage)
-            sourseLanguageISO = getISOLanguage(language: self.sourseLanguage)
+            sourceLanguageText = getTextLanguage(language: self.sourseLanguage)
+            sourceLanguageISO = getISOLanguage(language: self.sourseLanguage)
         }
     }
     var resultLanguage: Language {
@@ -23,10 +23,10 @@ class Languages {
         }
     }
     
-    var sourseLanguageText: String = "English"
+    var sourceLanguageText: String = "English"
     var resultLanguageText: String = "Spanish"
     
-    var sourseLanguageISO: String = "en"
+    var sourceLanguageISO: String = "en"
     var resultLanguageISO: String = "es"
     
     init() {

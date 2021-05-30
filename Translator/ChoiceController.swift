@@ -36,7 +36,7 @@ class ChoiceController: UIViewController {
 
     private func setCurrentLanguage() {
         if segueType == "leftButton" {
-            currentLanguageLable.text = currentLanguages?.sourseLanguageText
+            currentLanguageLable.text = currentLanguages?.sourceLanguageText
         } else {
             currentLanguageLable.text = currentLanguages?.resultLanguageText
         }
