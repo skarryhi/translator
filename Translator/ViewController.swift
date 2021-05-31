@@ -8,47 +8,31 @@
 
 import UIKit
 
-
+protocol LanguageCurrentDelegate: class {
+    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language)
+}
 
 class ViewController: UIViewController {
 
     var currentLanguages = Languages()
-    let token = "Bearer t1.9euelZqYi5uXkpial8yRzY-Qns7Jnu3rnpWakJCZisySnszHyJeOmpzPnMbl8_cCKTJ6-e81EC50_d3z90JXL3r57zUQLnT9.SvqNKivEDcvvSuCWBFRRZs7o9rzrt7-uu3jp0ZwmIXl-lDgtoqTMEzBfKq6dukUL6Y_mtGRWb38r8hukni2YAw"
+    let token = "Bearer t1.9euelZqYks_Mx5SQlM2XyJrIzoqLx-3rnpWakJCZisySnszHyJeOmpzPnMbl8_cJDS16-e9HJ1Va_N3z90k7Knr570cnVVr8.Pg76K-ocGTRAlS_nzONXNSPxrMBHCsgGxWXk8WWocIZj41MeqIa0PLZaoZdTgKT0YegiEjTR-RJu7oE2YgSIBQ"
     let folder_id = "b1gllin8jcku7jtu772i"
     var timer: Timer?
     
     @IBOutlet weak var sourseLanguageButton: UIButton!
     @IBOutlet weak var resultLanguageButton: UIButton!
-    @IBOutlet weak var translatedTaxtLable: UILabel!
-    @IBOutlet weak var textFieldOutlet: UITextField!
+    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var translatedText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        translatedText.isEditable = false
+        textField.delegate = self
+        self.textField.textColor = .gray
+        self.textField.text = "Enter the text"
+        translatedText.textColor = .darkGray
         setButtonsLanguages()
-    }
-    
-
-    @IBAction func changeButton() {
-        currentLanguages.swipe()
-        setButtonsLanguages()
-    }
-    
-    // MARK: - Navigation
-    
-    @IBAction func save(_ unwindSegue: UIStoryboardSegue) {
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let vc = segue.destination as? ChoiceController,
-              let button = sender as? UIButton
-        else { return }
-        if button.titleLabel?.text == currentLanguages.sourceLanguageText {
-            vc.segueType = "leftButton"
-        } else {
-            vc.segueType = "rightButton"
-        }
-        vc.currentLanguages = self.currentLanguages
     }
     
     //MARK: - Buttons
@@ -59,30 +43,19 @@ class ViewController: UIViewController {
         resultLanguageButton.setTitle(currentLanguages.resultLanguageText, for: .normal)
     }
 
-    @IBAction func changedTextField(_ sender: Any) {
-        if self.textFieldOutlet.text == "" {
-            self.translatedTaxtLable.text = ""
-            return
-        }
-//        let enteredText = textField.text
-//        do {
-//            sleep(1)
-//        }
-//        if enteredText != textField.text { return }
-        createTimer()
-//        requestAPI()
 
-        
-        
-        
-        
+    @IBAction func changeButton() {
+        currentLanguages.swipe()
+        setButtonsLanguages()
+        self.textField.text = self.translatedText.text
+        timerRequest()
     }
     
     // MARK: - Timer
     
-    func createTimer() {
+    func timerRequest() {
         var savedString: String?
-        savedString = self.textFieldOutlet.text
+        savedString = self.textField.text
         timer = Timer.scheduledTimer(timeInterval: 0.3,
                                      target: self,
                                      selector: #selector(requestAPI),
@@ -97,10 +70,9 @@ class ViewController: UIViewController {
             print("NO URL")
             return nil }
         
-        
         let parameters = [
             "folder_id" : self.folder_id,
-            "texts" : [self.textFieldOutlet.text],
+            "texts" : [self.textField.text],
             "sourceLanguageCode" : self.currentLanguages.sourceLanguageISO,
             "targetLanguageCode" : self.currentLanguages.resultLanguageISO
             ] as [String : Any]
@@ -108,7 +80,6 @@ class ViewController: UIViewController {
             print("ERROR JSON")
             return nil
         }
-//        print(self.currentLanguages.resultLanguageISO)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -120,32 +91,85 @@ class ViewController: UIViewController {
     
     @objc private func requestAPI(timer: Timer) {
         guard let request = createRequest(),
-            timer.userInfo as! String == self.textFieldOutlet.text!
-            else {
-                return
-        }
+            timer.userInfo as! String == self.textField.text!
+            else { return }
 
-//        print("\(savedString)  \(self.textFieldOutlet.text)")
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 print("NO HAVE DATA")
                 return }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-            } catch {
-                print (error)
-            }
-            
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: [])
+//                print(json)
+//            } catch {
+//                print (error)
+//            }
             if let jsonResult = try? JSONDecoder().decode(Translations.self, from: data) {
                 DispatchQueue.main.async {
-                   self.translatedTaxtLable.text = jsonResult.translations.first?.text
+                   self.translatedText.text = jsonResult.translations.first?.text
                 }
-                print(jsonResult)
+//                print(jsonResult)
             }
         }
         task.resume()
+    }
+    // MARK: - Navigation
+    
+    @IBAction func save(_ unwindSegue: UIStoryboardSegue) {
+        setButtonsLanguages()
+        timerRequest()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let vc = segue.destination as? ChoiceController,
+              let button = sender as? UIButton
+        else { return }
+        if button.titleLabel?.text == currentLanguages.sourceLanguageText {
+            vc.segueType = "leftButton"
+        } else {
+            vc.segueType = "rightButton"
+        }
+        vc.currentLanguages = self.currentLanguages
+    }
+}
+
+extension ViewController: LanguageCurrentDelegate {
+    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language) {
+        self.currentLanguages.sourseLanguage = sourseLanguage
+        self.currentLanguages.resultLanguage = resultLanguage
+    }
+}
+
+    // MARK: - TextField
+
+extension ViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if self.textField.text == "" {
+            self.translatedText.text = ""
+//            self.textField.textColor = .gray
+//            self.textField.text = "Enter the text"
+            return
+        }
+        if self.textField.text.last == "\n" {
+            self.textField.resignFirstResponder()
+            self.textField.text.removeLast()
+        }
+        timerRequest()
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if self.textField.text == "Enter the text" {
+            self.textField.text = ""
+            self.textField.textColor = .black
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textField.text == "" {
+            self.textField.textColor = .gray
+            self.textField.text = "Enter the text"
+        }
     }
 }

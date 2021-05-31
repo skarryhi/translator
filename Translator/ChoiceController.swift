@@ -10,7 +10,8 @@ import UIKit
 
 class ChoiceController: UIViewController {
     
-    weak var currentLanguages: Languages?
+    var currentLanguages: Languages?
+    weak var mainController: LanguageCurrentDelegate?
 
     @IBOutlet weak var currentLanguageLable: UILabel!
     @IBOutlet weak var firstButton: UIButton!
@@ -26,9 +27,23 @@ class ChoiceController: UIViewController {
     }
     
     @IBAction func firstChoice() {
+        if segueType == "leftButton" {
+            currentLanguages?.sourseLanguage = Languages.getLanguage(language: firstButton.titleLabel!.text!)
+        } else {
+            currentLanguages?.resultLanguage = Languages.getLanguage(language: firstButton.titleLabel!.text!)
+        }
+        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
+                                             resultLanguage: currentLanguages!.resultLanguage)
     }
     
     @IBAction func secondChoice() {
+        if segueType == "leftButton" {
+            currentLanguages?.sourseLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
+        } else {
+            currentLanguages?.resultLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
+        }
+        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
+                                             resultLanguage: currentLanguages!.resultLanguage)
     }
     
     // MARK: - Navigation

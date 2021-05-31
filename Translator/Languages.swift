@@ -8,6 +8,13 @@
 
 import Foundation
 
+
+enum Language {
+    case english
+    case russian
+    case spanish
+}
+
 class Languages {
 
     var sourseLanguage: Language {
@@ -57,6 +64,19 @@ class Languages {
         }
     }
     
+    static func getLanguage(language: String) -> Language {
+        switch language {
+        case "English":
+            return .english
+        case "Russian":
+            return .russian
+        case "Spanish":
+            return .spanish
+        default:
+            return .english
+        }
+    }
+    
     func swipe() {
         let sourse = sourseLanguage
         sourseLanguage = resultLanguage
@@ -81,9 +101,4 @@ class Languages {
     }
 }
 
-enum Language {
-    case english
-    case russian
-    case spanish
-}
 
