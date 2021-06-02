@@ -17,6 +17,7 @@
 		FADC83002654330E008453F3 /* Translator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FADC82FE2654330E008453F3 /* Translator.xcdatamodeld */; };
 		FADC83022654330F008453F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FADC83012654330F008453F3 /* Assets.xcassets */; };
 		FADC83052654330F008453F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADC83032654330F008453F3 /* LaunchScreen.storyboard */; };
+		FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FADC83012654330F008453F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FADC83042654330F008453F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FADC83062654330F008453F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLanguageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0EEE3A266517880031B353 /* LanguagesUtils */ = {
+			isa = PBXGroup;
+			children = (
+				FA7E0AE22657F242001594D4 /* Languages.swift */,
+			);
+			path = LanguagesUtils;
+			sourceTree = "<group>";
+		};
 		FADC82E92654330E008453F3 = {
 			isa = PBXGroup;
 			children = (
@@ -64,11 +74,12 @@
 		FADC82F42654330E008453F3 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				FA0EEE3A266517880031B353 /* LanguagesUtils */,
 				FADC82F52654330E008453F3 /* AppDelegate.swift */,
 				FADC82F72654330E008453F3 /* SceneDelegate.swift */,
 				FAB3DD8D26626552009D37FD /* StructResponse.swift */,
-				FA7E0AE22657F242001594D4 /* Languages.swift */,
 				FACD605B265801FD00C29198 /* ChoiceController.swift */,
+				FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */,
 				FA7E0AE02657F045001594D4 /* ViewController.swift */,
 				FADC83012654330F008453F3 /* Assets.xcassets */,
 				FADC82FB2654330E008453F3 /* Main.storyboard */,
@@ -156,6 +167,7 @@
 				FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */,
 				FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
+				FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */,
 				FA7E0AE32657F242001594D4 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ChoiceController: UIViewController {
+class ChoiceController: UITableViewController {
     
-    var currentLanguages: Languages?
+    var currentLanguages: Languages = Languages()
     weak var mainController: LanguageCurrentDelegate?
 
-    @IBOutlet weak var currentLanguageLable: UILabel!
-    @IBOutlet weak var firstButton: UIButton!
-    @IBOutlet weak var secondButton: UIButton!
+    var currentLanguage = ""
+    var languages = [String]()
     var choice: String?
     var segueType: String?
     
@@ -23,27 +22,38 @@ class ChoiceController: UIViewController {
         super.viewDidLoad()
 
         setCurrentLanguage()
-        setButtons()
+        createLanguagesList()
+        tableView.delegate = self
     }
     
-    @IBAction func firstChoice() {
-        if segueType == "leftButton" {
-            currentLanguages?.sourseLanguage = Languages.getLanguage(language: firstButton.titleLabel!.text!)
-        } else {
-            currentLanguages?.resultLanguage = Languages.getLanguage(language: firstButton.titleLabel!.text!)
-        }
-        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
-                                             resultLanguage: currentLanguages!.resultLanguage)
-    }
+//    @IBAction func firstChoice() {
+//        if segueType == "leftButton" {
+//            currentLanguages?.sourseLanguage = Languages.getLanguage(language: firstButton.text!)
+//        } else {
+//            currentLanguages?.resultLanguage = Languages.getLanguage(language: firstButton.text!)
+//        }
+//        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
+//                                             resultLanguage: currentLanguages!.resultLanguage)
+//    }
+//
+//    @IBAction func secondChoice() {
+//        if segueType == "leftButton" {
+//            currentLanguages?.sourseLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
+//        } else {
+//            currentLanguages?.resultLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
+//        }
+//        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
+//                                             resultLanguage: currentLanguages!.resultLanguage)
+//    }
     
-    @IBAction func secondChoice() {
-        if segueType == "leftButton" {
-            currentLanguages?.sourseLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
-        } else {
-            currentLanguages?.resultLanguage = Languages.getLanguage(language: secondButton.titleLabel!.text!)
-        }
-        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages!.sourseLanguage,
-                                             resultLanguage: currentLanguages!.resultLanguage)
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return currentLanguages.numberOfLanguages + 1
     }
     
     // MARK: - Navigation
@@ -51,21 +61,41 @@ class ChoiceController: UIViewController {
 
     private func setCurrentLanguage() {
         if segueType == "leftButton" {
-            currentLanguageLable.text = currentLanguages?.sourceLanguageText
+            currentLanguage = currentLanguages.sourceLanguageText
         } else {
-            currentLanguageLable.text = currentLanguages?.resultLanguageText
+            currentLanguage = currentLanguages.resultLanguageText
         }
     }
     
-    private func setButtons() {
-        var languages: [String] = []
+    private func createLanguagesList() {
+        self.languages += [currentLanguage]
         if segueType == "leftButton" {
-            languages = Languages.otherLanguages(for: currentLanguages!.sourseLanguage)
+            languages += Languages.otherLanguages(for: currentLanguages.sourseLanguage)
         } else {
-            languages = Languages.otherLanguages(for: currentLanguages!.resultLanguage)
+            languages += Languages.otherLanguages(for: currentLanguages.resultLanguage)
         }
-        firstButton.setTitle(languages.first, for: .normal)
-        secondButton.setTitle(languages.last, for: .normal)
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableLanguageCell", for: indexPath) as! TableLanguageCell
+        if indexPath.row == 0 {
+            return cell
+        }
+        cell.textLabel?.text = languages[indexPath.row - 1]
+        if cell.textLabel?.text == currentLanguage {
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if segueType == "leftButton" {
+            currentLanguages.sourseLanguage = Languages.getLanguage(language: languages[indexPath.row - 1])
+        } else {
+            currentLanguages.resultLanguage = Languages.getLanguage(language: languages[indexPath.row - 1])
+        }
+        mainController?.changeCurentLanguage(sourseLanguage: currentLanguages.sourseLanguage,
+                                             resultLanguage: currentLanguages.resultLanguage)
+        return indexPath
+    }
 }

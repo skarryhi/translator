@@ -15,7 +15,7 @@ protocol LanguageCurrentDelegate: class {
 class ViewController: UIViewController {
 
     var currentLanguages = Languages()
-    let token = "Bearer t1.9euelZqYks_Mx5SQlM2XyJrIzoqLx-3rnpWakJCZisySnszHyJeOmpzPnMbl8_cJDS16-e9HJ1Va_N3z90k7Knr570cnVVr8.Pg76K-ocGTRAlS_nzONXNSPxrMBHCsgGxWXk8WWocIZj41MeqIa0PLZaoZdTgKT0YegiEjTR-RJu7oE2YgSIBQ"
+    let token = "Bearer t1.9euelZqTipyZi4qRlcqZz4qPloqPz-3rnpWakJCZisySnszHyJeOmpzPnMbl9Pc4PSd6-e8DQHnj3fT3eGskevnvA0B54w.RrhSmGb41MdGUQwbpKvMj7F5G-YQszlwbbejyoYHqwMGe7VHHgY1ljmsKrH0jOVgcVOLSP3TQdm9rb6XAWJfBQ"
     let folder_id = "b1gllin8jcku7jtu772i"
     var timer: Timer?
     
@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     // MARK: - Timer
     
     func timerRequest() {
+        if textField.text == "Enter the text" { return }
         var savedString: String?
         savedString = self.textField.text
         timer = Timer.scheduledTimer(timeInterval: 0.3,
@@ -125,12 +126,13 @@ class ViewController: UIViewController {
         guard let vc = segue.destination as? ChoiceController,
               let button = sender as? UIButton
         else { return }
-        if button.titleLabel?.text == currentLanguages.sourceLanguageText {
+        if button == sourseLanguageButton {
             vc.segueType = "leftButton"
         } else {
             vc.segueType = "rightButton"
         }
         vc.currentLanguages = self.currentLanguages
+        vc.mainController = self as LanguageCurrentDelegate
     }
 }
 
@@ -147,13 +149,16 @@ extension ViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if self.textField.text == "" {
             self.translatedText.text = ""
-//            self.textField.textColor = .gray
-//            self.textField.text = "Enter the text"
             return
         }
         if self.textField.text.last == "\n" {
             self.textField.resignFirstResponder()
             self.textField.text.removeLast()
+            if self.textField.text == "" {
+                self.textField.textColor = .gray
+                self.textField.text = "Enter the text"
+                return
+            }
         }
         timerRequest()
     }

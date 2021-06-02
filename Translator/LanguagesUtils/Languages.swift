@@ -16,6 +16,8 @@ enum Language {
 }
 
 class Languages {
+    
+    let numberOfLanguages = 3
 
     var sourseLanguage: Language {
         didSet {
