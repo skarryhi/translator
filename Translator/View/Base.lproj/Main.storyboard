@@ -158,7 +158,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wU3-FE-YoH">
                                         <rect key="frame" x="15" y="15" width="344" height="660"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter the text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="98S-of-TNg">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="98S-of-TNg">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="170"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -221,8 +221,8 @@
                     <tabBarItem key="tabBarItem" title="" image="book" catalog="system" id="ub2-we-pjR"/>
                     <connections>
                         <outlet property="resultLanguageButton" destination="oQM-vd-Ni5" id="8Hd-FD-aJc"/>
+                        <outlet property="sourceText" destination="98S-of-TNg" id="Kly-o7-uiK"/>
                         <outlet property="sourseLanguageButton" destination="hnS-mR-ou0" id="UM0-Vn-CTs"/>
-                        <outlet property="textField" destination="98S-of-TNg" id="Kly-o7-uiK"/>
                         <outlet property="translatedText" destination="Fa8-tw-cMt" id="5Wg-YZ-WsU"/>
                     </connections>
                 </viewController>

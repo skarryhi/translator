@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE02657F045001594D4 /* ViewController.swift */; };
-		FA7E0AE32657F242001594D4 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE22657F242001594D4 /* Languages.swift */; };
+		FA7E0AE32657F242001594D4 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE22657F242001594D4 /* LanguageManager.swift */; };
 		FAB3DD8E26626552009D37FD /* StructResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3DD8D26626552009D37FD /* StructResponse.swift */; };
 		FACD605C265801FD00C29198 /* ChoiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD605B265801FD00C29198 /* ChoiceController.swift */; };
 		FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC82F52654330E008453F3 /* AppDelegate.swift */; };
@@ -18,11 +18,12 @@
 		FADC83022654330F008453F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FADC83012654330F008453F3 /* Assets.xcassets */; };
 		FADC83052654330F008453F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADC83032654330F008453F3 /* LaunchScreen.storyboard */; };
 		FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */; };
+		FAEF405826678BE70086F9B2 /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF405726678BE70086F9B2 /* APIRequests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA7E0AE02657F045001594D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FA7E0AE22657F242001594D4 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		FA7E0AE22657F242001594D4 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		FAB3DD8D26626552009D37FD /* StructResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructResponse.swift; sourceTree = "<group>"; };
 		FACD605B265801FD00C29198 /* ChoiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceController.swift; sourceTree = "<group>"; };
 		FADC82F22654330E008453F3 /* Translator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +35,7 @@
 		FADC83042654330F008453F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FADC83062654330F008453F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLanguageCell.swift; sourceTree = "<group>"; };
+		FAEF405726678BE70086F9B2 /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,14 +49,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA0EEE3A266517880031B353 /* LanguagesUtils */ = {
-			isa = PBXGroup;
-			children = (
-				FA7E0AE22657F242001594D4 /* Languages.swift */,
-			);
-			path = LanguagesUtils;
-			sourceTree = "<group>";
-		};
 		FADC82E92654330E008453F3 = {
 			isa = PBXGroup;
 			children = (
@@ -74,20 +68,45 @@
 		FADC82F42654330E008453F3 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
-				FA0EEE3A266517880031B353 /* LanguagesUtils */,
+				FAEF405B26678D570086F9B2 /* Model */,
+				FAEF405A26678D1F0086F9B2 /* Controller */,
+				FAEF405926678D010086F9B2 /* View */,
 				FADC82F52654330E008453F3 /* AppDelegate.swift */,
 				FADC82F72654330E008453F3 /* SceneDelegate.swift */,
-				FAB3DD8D26626552009D37FD /* StructResponse.swift */,
-				FACD605B265801FD00C29198 /* ChoiceController.swift */,
-				FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */,
-				FA7E0AE02657F045001594D4 /* ViewController.swift */,
 				FADC83012654330F008453F3 /* Assets.xcassets */,
-				FADC82FB2654330E008453F3 /* Main.storyboard */,
-				FADC83032654330F008453F3 /* LaunchScreen.storyboard */,
 				FADC83062654330F008453F3 /* Info.plist */,
 				FADC82FE2654330E008453F3 /* Translator.xcdatamodeld */,
 			);
 			path = Translator;
+			sourceTree = "<group>";
+		};
+		FAEF405926678D010086F9B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FADC82FB2654330E008453F3 /* Main.storyboard */,
+				FADC83032654330F008453F3 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAEF405A26678D1F0086F9B2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FACD605B265801FD00C29198 /* ChoiceController.swift */,
+				FA7E0AE02657F045001594D4 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAEF405B26678D570086F9B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA7E0AE22657F242001594D4 /* LanguageManager.swift */,
+				FAB3DD8D26626552009D37FD /* StructResponse.swift */,
+				FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */,
+				FAEF405726678BE70086F9B2 /* APIRequests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,10 +184,11 @@
 				FADC83002654330E008453F3 /* Translator.xcdatamodeld in Sources */,
 				FAB3DD8E26626552009D37FD /* StructResponse.swift in Sources */,
 				FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */,
+				FAEF405826678BE70086F9B2 /* APIRequests.swift in Sources */,
 				FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
 				FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */,
-				FA7E0AE32657F242001594D4 /* Languages.swift in Sources */,
+				FA7E0AE32657F242001594D4 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

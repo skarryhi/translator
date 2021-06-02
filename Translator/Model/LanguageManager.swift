@@ -15,7 +15,7 @@ enum Language {
     case spanish
 }
 
-class Languages {
+class LanguageManager {
     
     let numberOfLanguages = 3
 
