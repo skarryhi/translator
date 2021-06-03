@@ -15,7 +15,6 @@ class ChoiceController: UITableViewController {
 
     var currentLanguage = ""
     var languages = [String]()
-    var choice: String?
     var segueType: String?
     
     override func viewDidLoad() {
@@ -56,6 +55,7 @@ class ChoiceController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableLanguageCell", for: indexPath) as! TableLanguageCell
         if indexPath.row == 0 {
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8640925884, blue: 0.2513345182, alpha: 1)
             return cell
         }
         cell.textLabel?.text = languages[indexPath.row - 1]

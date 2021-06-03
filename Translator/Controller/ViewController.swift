@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol LanguageCurrentDelegate: class {
     func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language)
@@ -17,14 +18,14 @@ protocol ResultTextChange: class {
     func getSourceLanguages() -> String
     func getResultLanguages() -> String
     func getSourceText() -> String
-    func getPlaceholder() -> String
 }
 
 class ViewController: UIViewController {
     
     var languageManager = LanguageManager()
     var requestManager = RequestManager()
-    let textPlaceholder = "Enter text"
+    var placeholder = Placeholder()
+    var translations: [NSManagedObject] = []
     
     @IBOutlet weak var sourseLanguageButton: UIButton!
     @IBOutlet weak var resultLanguageButton: UIButton!
@@ -47,7 +48,8 @@ class ViewController: UIViewController {
     
     private func setTextPlaceholder() {
         self.sourceText.textColor = .gray
-        self.sourceText.text = textPlaceholder
+        self.sourceText.text = placeholder.text
+        placeholder.isOn = true
     }
     
     //MARK: - Buttons
@@ -64,6 +66,8 @@ class ViewController: UIViewController {
         setButtonsLanguages()
         if self.translatedText.text != "" {
             self.sourceText.text = self.translatedText.text
+        } else {
+            return
         }
         requestManager.timerRequest()
     }
@@ -74,7 +78,10 @@ class ViewController: UIViewController {
     
     @IBAction func save(_ unwindSegue: UIStoryboardSegue) {
         setButtonsLanguages()
-        requestManager.timerRequest()
+        if placeholder.isOn == false {
+            requestManager.timerRequest()
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,7 +96,15 @@ class ViewController: UIViewController {
         vc.languageManager = self.languageManager
         vc.mainController = self as LanguageCurrentDelegate
     }
+    
+    // MARK: - Core Data
+    
+    private func saveToHistory() {
+        
+    }
 }
+
+// MARK: - Protocols
 
 extension ViewController: LanguageCurrentDelegate {
     func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language) {
@@ -102,7 +117,6 @@ extension ViewController: ResultTextChange {
     func getSourceLanguages() -> String { return self.languageManager.sourceLanguageISO }
     func getResultLanguages() -> String { return self.languageManager.resultLanguageISO }
     func getSourceText() -> String { return self.sourceText.text }
-    func getPlaceholder() -> String { return self.textPlaceholder }
     func setResultText(resultLanguage: String) { self.translatedText.text = resultLanguage }
 }
 
@@ -113,6 +127,7 @@ extension ViewController: UITextViewDelegate {
         if self.sourceText.text.last == "\n" {
             self.sourceText.resignFirstResponder()
             self.sourceText.text.removeLast()
+            saveToHistory()
         }
         if self.sourceText.text == "" {
             self.translatedText.text = ""
@@ -125,9 +140,10 @@ extension ViewController: UITextViewDelegate {
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        if self.sourceText.text == textPlaceholder {
+        if placeholder.isOn == true {
             self.sourceText.text = ""
             self.sourceText.textColor = .black
+            placeholder.isOn = false
         }
         return true
     }

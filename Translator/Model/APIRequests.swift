@@ -10,7 +10,7 @@ import Foundation
 
 class RequestManager {
     
-    private let token = "Bearer t1.9euelZrKz5WUjMeJj5fKz8yem5SWle3rnpWakJCZisySnszHyJeOmpzPnMbl8_daUCJ6-e9_VXIS_t3z9xp_H3r5739VchL-.Pj-zSs_VHa9PxCemxUkdDNTOEECSFeTzk7FOgSkiWwp5AqdLg2xdJJ4Onw6S3haOdafD-ue-hNDY8DELYxc_AA"
+    private let token = "Bearer t1.9euelZrJxprJmcaazZabl5SRk4vPye3rnpWakJCZisySnszHyJeOmpzPnMbl9Pc0LR16-e8GHRDB3fT3dFsaevnvBh0QwQ.IOFUNXN414dCQLi6KIqLCRFbYThGIlcPlKZwa2vySI2R3lEnLet0u5zQkiZHw6VE-UKWOeOWZkE4qyFUPas_Cg"
     private let folder_id = "b1gllin8jcku7jtu772i"
     private var timer: Timer?
     weak var vc: ResultTextChange?
@@ -21,7 +21,6 @@ class RequestManager {
     // MARK: - Timer
     
     func timerRequest() {
-        if vc?.getSourceText() == vc?.getPlaceholder() { return }
         var savedString: String?
         savedString = vc?.getSourceText()
         timer = Timer.scheduledTimer(timeInterval: 0.3,
