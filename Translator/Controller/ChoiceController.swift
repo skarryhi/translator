@@ -23,6 +23,7 @@ class ChoiceController: UITableViewController {
         setCurrentLanguage()
         createLanguagesList()
         tableView.delegate = self
+        tableView.insetsContentViewsToSafeArea = true
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

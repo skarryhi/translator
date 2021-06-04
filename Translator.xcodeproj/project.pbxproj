@@ -10,6 +10,7 @@
 		FA0905B92667CDF800DE3F87 /* History.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA0905B72667CDF800DE3F87 /* History.xcdatamodeld */; };
 		FA0905C02667D01400DE3F87 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0905BE2667D01400DE3F87 /* History+CoreDataClass.swift */; };
 		FA0905C12667D01400DE3F87 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0905BF2667D01400DE3F87 /* History+CoreDataProperties.swift */; };
+		FA1F971F2668FDFC00BBFD91 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F971E2668FDFC00BBFD91 /* HistoryCell.swift */; };
 		FA23DAC72668E2DE003E0607 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23DAC62668E2DE003E0607 /* Placeholder.swift */; };
 		FA6A56A32667F14C0073E284 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6A56A22667F14C0073E284 /* HistoryController.swift */; };
 		FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E0AE02657F045001594D4 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		FA0905B82667CDF800DE3F87 /* History.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = History.xcdatamodel; sourceTree = "<group>"; };
 		FA0905BE2667D01400DE3F87 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA0905BF2667D01400DE3F87 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "History+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA1F971E2668FDFC00BBFD91 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		FA23DAC62668E2DE003E0607 /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Translator/Model/Placeholder.swift; sourceTree = SOURCE_ROOT; };
 		FA6A56A22667F14C0073E284 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		FA7E0AE02657F045001594D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +64,6 @@
 			children = (
 				FA0905BE2667D01400DE3F87 /* History+CoreDataClass.swift */,
 				FA0905BF2667D01400DE3F87 /* History+CoreDataProperties.swift */,
-				FA0905B72667CDF800DE3F87 /* History.xcdatamodeld */,
 			);
 			path = HistoryItem;
 			sourceTree = "<group>";
@@ -93,6 +94,7 @@
 				FADC82F72654330E008453F3 /* SceneDelegate.swift */,
 				FADC83012654330F008453F3 /* Assets.xcassets */,
 				FADC83062654330F008453F3 /* Info.plist */,
+				FA0905B72667CDF800DE3F87 /* History.xcdatamodeld */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -123,6 +125,7 @@
 				FA7E0AE22657F242001594D4 /* LanguageManager.swift */,
 				FAB3DD8D26626552009D37FD /* StructResponse.swift */,
 				FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */,
+				FA1F971E2668FDFC00BBFD91 /* HistoryCell.swift */,
 				FAEF405726678BE70086F9B2 /* APIRequests.swift */,
 				FA23DAC62668E2DE003E0607 /* Placeholder.swift */,
 			);
@@ -208,6 +211,7 @@
 				FADC82F62654330E008453F3 /* AppDelegate.swift in Sources */,
 				FAEF405826678BE70086F9B2 /* APIRequests.swift in Sources */,
 				FA7E0AE12657F045001594D4 /* ViewController.swift in Sources */,
+				FA1F971F2668FDFC00BBFD91 /* HistoryCell.swift in Sources */,
 				FA0905C12667D01400DE3F87 /* History+CoreDataProperties.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
 				FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */,

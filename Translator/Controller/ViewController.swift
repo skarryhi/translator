@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     var languageManager = LanguageManager()
     var requestManager = RequestManager()
     var placeholder = Placeholder()
-    var translations: [NSManagedObject] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var sourseLanguageButton: UIButton!
     @IBOutlet weak var resultLanguageButton: UIButton!
@@ -42,6 +42,8 @@ class ViewController: UIViewController {
         
         setTextPlaceholder()
         setButtonsLanguages()
+        
+        
     }
     
     // MARK: - Placeholder
@@ -81,7 +83,6 @@ class ViewController: UIViewController {
         if placeholder.isOn == false {
             requestManager.timerRequest()
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,6 +101,17 @@ class ViewController: UIViewController {
     // MARK: - Core Data
     
     private func saveToHistory() {
+        let item = History(context: self.context)
+        item.source = self.sourceText.text
+        item.result = self.translatedText.text
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+            }
+        }
+        catch {
+            print("DON't SAVE")
+        }
         
     }
 }
@@ -127,7 +139,9 @@ extension ViewController: UITextViewDelegate {
         if self.sourceText.text.last == "\n" {
             self.sourceText.resignFirstResponder()
             self.sourceText.text.removeLast()
-            saveToHistory()
+            if self.sourceText.text != "" {
+                saveToHistory()
+            }
         }
         if self.sourceText.text == "" {
             self.translatedText.text = ""

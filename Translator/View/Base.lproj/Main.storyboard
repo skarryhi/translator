@@ -15,6 +15,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" id="Dg0-p1-O1W">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg0-p1-O1W" id="D2E-Mu-JJm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="VI2-MO-D3E" id="GSE-wl-ZQx"/>
                             <outlet property="delegate" destination="VI2-MO-D3E" id="lo5-pT-VnE"/>
@@ -23,6 +33,9 @@
                     <navigationItem key="navigationItem" title="History" id="WhN-hM-Tic">
                         <barButtonItem key="rightBarButtonItem" image="bin.xmark" catalog="system" id="N7U-wK-Nuv">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="deleteHistory:" destination="VI2-MO-D3E" id="b2k-WM-yYw"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
