@@ -16,8 +16,8 @@ class HistoryController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.accessibilityLabel = "Hi"
-//        tableView.register(HistoryCell.self, forCellReuseIdentifier: "HistoryCell")
+        tableView.allowsSelection = false
+        tableView.register(HistoryCell.self, forCellReuseIdentifier: "HistoryCell")
 
     }
     
@@ -40,18 +40,20 @@ class HistoryController: UITableViewController {
 //    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCell
         
-        var cv1 = tableView.dequeueReusableCell(withIdentifier: "cv1")
-        if cv1 == nil {
-            cv1 = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cv1")
-        }
-        guard let cell = cv1 else { fatalError("Failed to get a cell!") }
+//        var cv1 = tableView.dequeueReusableCell(withIdentifier: "cv1")
+//        if cv1 == nil {
+//            cv1 = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cv1")
+//        }
+//        guard let cell = cv1 else { fatalError("Failed to get a cell!") }
         
         
         let item = translations![indexPath.row]
-        cell.textLabel?.text = item.source
-        cell.detailTextLabel?.text = item.result
+//        cell.textLabel?.text = item.source
+//        cell.detailTextLabel?.text = item.result
+//        print("\(item.source) \(item.result)")
+        cell.pair = item
 //        print(item.source)
 //        print(item.result)
         
@@ -75,6 +77,7 @@ class HistoryController: UITableViewController {
             
             DispatchQueue.main.async {
                 self.translations?.reverse()
+//                print("\(self.translations?.first!.source) \(self.translations?.first!.result)")
                 self.tableView.reloadData()
             }
         }
