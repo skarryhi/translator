@@ -10,7 +10,7 @@ import Foundation
 
 class RequestManager {
     
-    private let token = "Bearer t1.9euelZrJxprJmcaazZabl5SRk4vPye3rnpWakJCZisySnszHyJeOmpzPnMbl9Pc0LR16-e8GHRDB3fT3dFsaevnvBh0QwQ.IOFUNXN414dCQLi6KIqLCRFbYThGIlcPlKZwa2vySI2R3lEnLet0u5zQkiZHw6VE-UKWOeOWZkE4qyFUPas_Cg"
+    private let token = "Bearer t1.9euelZqYjZ2JmJPKkorMxsicypKOyO3rnpWakJCZisySnszHyJeOmpzPnMbl8_cVdxd6-e9CAkIr_t3z91UlFXr570ICQiv-._QCNExcG8xJ6no0HYqOe1p3ofoO69DlMHPbo1mhnKGirAqprAt8652lHsQ6AxeC5nZGvraMK53dB_g0ZM1f-Cw"
     private let folder_id = "b1gllin8jcku7jtu772i"
     private var timer: Timer?
     weak var vc: ResultTextChange?

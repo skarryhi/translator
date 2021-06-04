@@ -16,6 +16,7 @@ class HistoryController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.accessibilityLabel = "Hi"
 //        tableView.register(HistoryCell.self, forCellReuseIdentifier: "HistoryCell")
 
     }
@@ -34,6 +35,9 @@ class HistoryController: UITableViewController {
         return translations?.count ?? 0
     }
 
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 500
+//    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCell
@@ -79,11 +83,27 @@ class HistoryController: UITableViewController {
         }
     }
     @IBAction func deleteHistory(_ sender: UIBarButtonItem) {
-        guard let translations = self.translations else {return}
-        for item in translations {
-            context.delete(item)
+        guard let translations = self.translations,
+            translations.count != 0
+            else {
+            let alert = UIAlertController(title: "History is clean", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            return
         }
-        try! context.save()
-        tableView.reloadData()
+        print(translations.count)
+        let alert = UIAlertController(title: "Delete", message: "Do you whant to delete all words?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
+            for item in translations {
+                self.context.delete(item)
+            }
+            try! self.context.save()
+            self.tableView.reloadData()
+        }
+        let canсelAction = UIAlertAction(title: "Canсel", style: .default)
+        alert.addAction(canсelAction)
+        alert.addAction(yesAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
