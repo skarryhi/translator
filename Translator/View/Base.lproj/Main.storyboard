@@ -15,16 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryCell" id="Dg0-p1-O1W">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dg0-p1-O1W" id="D2E-Mu-JJm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="VI2-MO-D3E" id="GSE-wl-ZQx"/>
                             <outlet property="delegate" destination="VI2-MO-D3E" id="lo5-pT-VnE"/>
@@ -42,38 +32,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rIJ-aC-JwO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1270" y="-55"/>
-        </scene>
-        <!--Choice Controller-->
-        <scene sceneID="xe6-PC-sfH">
-            <objects>
-                <tableViewController id="Y4Z-mT-nho" customClass="ChoiceController" customModule="Translator" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sti-ZN-q5H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableLanguageCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableLanguageCell" id="vI7-nF-AzI" customClass="TableLanguageCell" customModule="Translator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vI7-nF-AzI" id="jWy-Gq-nlA" customClass="TableLanguageCell" customModule="Translator" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="YOt-Su-pSd" kind="unwind" unwindAction="save:" id="jvs-ex-KCG"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Y4Z-mT-nho" id="RLC-xw-jAw"/>
-                            <outlet property="delegate" destination="Y4Z-mT-nho" id="ksa-A5-kw9"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xWa-lC-2Ft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="YOt-Su-pSd" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1270" y="-766"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="0eL-yr-hUH">
@@ -106,9 +64,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="English"/>
-                                        <connections>
-                                            <segue destination="Y4Z-mT-nho" kind="presentation" modalPresentationStyle="fullScreen" id="RNA-Og-jlg"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmr-5P-dle">
                                         <rect key="frame" x="102.33333333333333" y="6" width="26.999999999999986" height="18"/>
@@ -126,9 +81,6 @@
                                         <rect key="frame" x="134.33333333333331" y="0.0" width="97.666666666666686" height="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="Spanish"/>
-                                        <connections>
-                                            <segue destination="Y4Z-mT-nho" kind="presentation" modalPresentationStyle="fullScreen" id="c0f-Oq-O5v"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -263,7 +215,4 @@
         <image name="bookmark" catalog="system" width="56" height="64"/>
         <image name="play" catalog="system" width="60" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="RNA-Og-jlg"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -35,28 +35,11 @@ class HistoryController: UITableViewController {
         return translations?.count ?? 0
     }
 
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 500
-//    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryCell
         
-//        var cv1 = tableView.dequeueReusableCell(withIdentifier: "cv1")
-//        if cv1 == nil {
-//            cv1 = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cv1")
-//        }
-//        guard let cell = cv1 else { fatalError("Failed to get a cell!") }
-        
-        
         let item = translations![indexPath.row]
-//        cell.textLabel?.text = item.source
-//        cell.detailTextLabel?.text = item.result
-//        print("\(item.source) \(item.result)")
         cell.pair = item
-//        print(item.source)
-//        print(item.result)
-        
         return cell
     }
     
@@ -77,7 +60,6 @@ class HistoryController: UITableViewController {
             
             DispatchQueue.main.async {
                 self.translations?.reverse()
-//                print("\(self.translations?.first!.source) \(self.translations?.first!.result)")
                 self.tableView.reloadData()
             }
         }

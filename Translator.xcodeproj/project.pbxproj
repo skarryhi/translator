@@ -23,7 +23,6 @@
 		FADC82FD2654330E008453F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADC82FB2654330E008453F3 /* Main.storyboard */; };
 		FADC83022654330F008453F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FADC83012654330F008453F3 /* Assets.xcassets */; };
 		FADC83052654330F008453F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADC83032654330F008453F3 /* LaunchScreen.storyboard */; };
-		FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */; };
 		FAEF405826678BE70086F9B2 /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF405726678BE70086F9B2 /* APIRequests.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		FADC83012654330F008453F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FADC83042654330F008453F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FADC83062654330F008453F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableLanguageCell.swift; sourceTree = "<group>"; };
 		FAEF405726678BE70086F9B2 /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +62,6 @@
 		FA076145266A446200DA54D1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FAE2F6CB26654D57008E7916 /* TableLanguageCell.swift */,
 				FA1F971E2668FDFC00BBFD91 /* HistoryCell.swift */,
 			);
 			path = Cells;
@@ -226,7 +223,6 @@
 				FA1F971F2668FDFC00BBFD91 /* HistoryCell.swift in Sources */,
 				FA0905C12667D01400DE3F87 /* History+CoreDataProperties.swift in Sources */,
 				FADC82F82654330E008453F3 /* SceneDelegate.swift in Sources */,
-				FAE2F6CC26654D57008E7916 /* TableLanguageCell.swift in Sources */,
 				FA7E0AE32657F242001594D4 /* LanguageManager.swift in Sources */,
 				FA23DAC72668E2DE003E0607 /* Placeholder.swift in Sources */,
 			);

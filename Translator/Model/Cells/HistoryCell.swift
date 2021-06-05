@@ -47,36 +47,41 @@ class HistoryCell : UITableViewCell {
         addSubview(viewblue)
         addSubview(sourceLabel)
         addSubview(resultLabel)
-        viewblue.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        viewblue.anchor(top: safeAreaLayoutGuide.topAnchor,
+                        left: safeAreaLayoutGuide.leftAnchor,
+                        bottom: safeAreaLayoutGuide.bottomAnchor,
+                        right: safeAreaLayoutGuide.rightAnchor,
+                        
+                        paddingTop: 0,
+                        paddingLeft: 0,
+                        paddingBottom: 0,
+                        paddingRight: 0,
+                        
+                        width: 0,
+                        height: 0,
+                        enableInsets: false)
         
-        
-        sourceLabel.anchor(top: viewblue.topAnchor,
-                           left: viewblue.leftAnchor,
-                           bottom: viewblue.bottomAnchor,
-                           right: viewblue.centerXAnchor,
-                           
-                           paddingTop: 20,
-                           paddingLeft: 30,
-                           paddingBottom: 0,
-                           paddingRight: 30,
-                           
-                           width: 0,
-                           height: 0,
-                           enableInsets: false)
-        
-        resultLabel.anchor(top: viewblue.topAnchor,
-                           left: sourceLabel.rightAnchor,
-                           bottom: viewblue.bottomAnchor,
-                           right: viewblue.rightAnchor,
-                           
-                           paddingTop: 20,
-                           paddingLeft: 10,
-                           paddingBottom: 0,
-                           paddingRight: 20,
-                           
-                           width: 0,
-                           height: 0,
-                           enableInsets: false)
+        let stack: UIStackView = {
+            let stack = UIStackView(arrangedSubviews: [sourceLabel, resultLabel])
+            stack.distribution = .equalSpacing
+            stack.alignment = .center
+            stack.spacing = 30.0
+            return stack
+        }()
+
+        addSubview(stack)
+        stack.anchor(top: viewblue.topAnchor,
+                     left: viewblue.leftAnchor,
+                     bottom: viewblue.bottomAnchor,
+                     right: viewblue.rightAnchor,
+                     paddingTop: 20,
+                     paddingLeft: 30,
+                     paddingBottom: 0,
+                     paddingRight: 30,
+                     
+                     width: 0,
+                     height: 0,
+                     enableInsets: false)
     }
     
     required init?(coder aDecoder: NSCoder) {

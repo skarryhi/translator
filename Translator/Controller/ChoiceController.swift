@@ -10,12 +10,12 @@ import UIKit
 
 class ChoiceController: UITableViewController {
     
-    var languageManager: LanguageManager = LanguageManager()
+    var languageManager: LanguageManager
     weak var mainController: LanguageCurrentDelegate?
 
     var currentLanguage = ""
     var languages = [String]()
-    var segueType: String?
+    var segueType: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +24,21 @@ class ChoiceController: UITableViewController {
         createLanguagesList()
         tableView.delegate = self
         tableView.insetsContentViewsToSafeArea = true
+        tableView.separatorStyle = .none
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    init(segueType: String, languageManager: LanguageManager, mainController: inout LanguageCurrentDelegate) {
+        self.segueType = segueType
+        self.languageManager = languageManager
+        self.mainController = mainController
+        super.init(nibName: nil, bundle: nil)
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return languageManager.numberOfLanguages + 1
+        return languageManager.numberOfLanguages
     }
     
     // MARK: - Navigation
@@ -54,12 +61,13 @@ class ChoiceController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableLanguageCell", for: indexPath) as! TableLanguageCell
-        if indexPath.row == 0 {
-            cell.backgroundColor = #colorLiteral(red: 1, green: 0.8640925884, blue: 0.2513345182, alpha: 1)
-            return cell
+
+        var cv1 = tableView.dequeueReusableCell(withIdentifier: "cv1")
+        if cv1 == nil {
+            cv1 = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cv1")
         }
-        cell.textLabel?.text = languages[indexPath.row - 1]
+        guard let cell = cv1 else { fatalError("Failed to get a cell!") }
+        cell.textLabel?.text = languages[indexPath.row]
         if cell.textLabel?.text == currentLanguage {
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         }
@@ -68,12 +76,13 @@ class ChoiceController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if segueType == "leftButton" {
-            languageManager.sourseLanguage = LanguageManager.getLanguage(language: languages[indexPath.row - 1])
+            languageManager.sourseLanguage = LanguageManager.getLanguage(language: languages[indexPath.row])
         } else {
-            languageManager.resultLanguage = LanguageManager.getLanguage(language: languages[indexPath.row - 1])
+            languageManager.resultLanguage = LanguageManager.getLanguage(language: languages[indexPath.row])
         }
         mainController?.changeCurentLanguage(sourseLanguage: languageManager.sourseLanguage,
-                                             resultLanguage: languageManager.resultLanguage)
+                                             resultLanguage: languageManager.resultLanguage, controller: self)
+        dismiss(animated: true, completion: nil)
         return indexPath
     }
 }

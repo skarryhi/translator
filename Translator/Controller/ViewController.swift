@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol LanguageCurrentDelegate: class {
-    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language)
+    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language, controller: UITableViewController)
 }
 
 protocol ResultTextChange: class {
@@ -42,10 +42,8 @@ class ViewController: UIViewController {
         
         setTextPlaceholder()
         setButtonsLanguages()
-        
-        
     }
-    
+
     // MARK: - Placeholder
     
     private func setTextPlaceholder() {
@@ -59,7 +57,19 @@ class ViewController: UIViewController {
     
     private func setButtonsLanguages() {
         sourseLanguageButton.setTitle(languageManager.sourceLanguageText, for: .normal)
+        sourseLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
         resultLanguageButton.setTitle(languageManager.resultLanguageText, for: .normal)
+        resultLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
+    }
+    
+    @objc private func tapedButton(button : UIButton) {
+        var segue: String
+        if button == self.sourseLanguageButton {segue = "leftButton"} else {segue = "rightButton"}
+        var mainController = self as LanguageCurrentDelegate
+        let choiseController = ChoiceController(segueType: segue, languageManager: languageManager, mainController: &mainController)
+        let nvc = UINavigationController(rootViewController: choiseController)
+        nvc.navigationBar.backgroundColor = #colorLiteral(red: 0.9992701411, green: 0.8648766875, blue: 0.3745337725, alpha: 1)
+        present(nvc, animated: true)
     }
     
     
@@ -72,30 +82,6 @@ class ViewController: UIViewController {
             return
         }
         requestManager.timerRequest()
-    }
-    
-    
-    
-    // MARK: - Navigation
-    
-    @IBAction func save(_ unwindSegue: UIStoryboardSegue) {
-        setButtonsLanguages()
-        if placeholder.isOn == false {
-            requestManager.timerRequest()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let vc = segue.destination as? ChoiceController,
-            let button = sender as? UIButton
-            else { return }
-        if button == sourseLanguageButton {
-            vc.segueType = "leftButton"
-        } else {
-            vc.segueType = "rightButton"
-        }
-        vc.languageManager = self.languageManager
-        vc.mainController = self as LanguageCurrentDelegate
     }
     
     // MARK: - Core Data
@@ -119,9 +105,10 @@ class ViewController: UIViewController {
 // MARK: - Protocols
 
 extension ViewController: LanguageCurrentDelegate {
-    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language) {
+    func changeCurentLanguage(sourseLanguage: Language, resultLanguage: Language, controller: UITableViewController) {
         self.languageManager.sourseLanguage = sourseLanguage
         self.languageManager.resultLanguage = resultLanguage
+        setButtonsLanguages()
     }
 }
 

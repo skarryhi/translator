@@ -13,11 +13,15 @@ extension UIView {
     func anchor (top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,  paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat, enableInsets: Bool) {
         var topInset = CGFloat(0)
         var bottomInset = CGFloat(0)
+        var leftInset = CGFloat(0)
+        var rightInset = CGFloat(0)
         
         if #available(iOS 11, *), enableInsets {
             let insets = self.safeAreaInsets
             topInset = insets.top
             bottomInset = insets.bottom
+            leftInset = insets.left
+            rightInset = insets.right
             
             print("Top: \(topInset)")
             print("bottom: \(bottomInset)")
@@ -29,10 +33,10 @@ extension UIView {
             self.topAnchor.constraint(equalTo: top, constant: paddingTop+topInset).isActive = true
         }
         if let left = left {
-            self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+            self.leftAnchor.constraint(equalTo: left, constant: paddingLeft+leftInset).isActive = true
         }
         if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
+            rightAnchor.constraint(equalTo: right, constant: -paddingRight-rightInset).isActive = true
         }
         if let bottom = bottom {
             bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom-bottomInset).isActive = true
