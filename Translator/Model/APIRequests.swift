@@ -10,8 +10,8 @@ import Foundation
 
 class RequestManager {
     
-    private let token = "Bearer t1.9euelZrOic2Pxp7Ki5rOz53LkI7Mmu3rnpWakJCZisySnszHyJeOmpzPnMbl8_cwABJ6-e92OzZM_t3z93AuD3r573Y7Nkz-.j4-ZiUp0kRiWrd-KaxaIDf61-M2lnj5KuRk77ahALzOxhi-xJfUfj8RQDHMR4dcI8qlCB2mpkvP2V4SdlpVnAw"
-    private let folder_id = "b1gllin8jcku7jtu772i"
+    let token = "Bearer t1.9euelZqenMeZj83Pm5CNk5SKmceRyO3rnpWakJCZisySnszHyJeOmpzPnMbl9PdFbgd6-e8nH1Kl3fT3BR0FevnvJx9SpQ._pE5cpy581FWb1tups-6dJG912RcEwMkRw5V5prm5of3sUguIcinNWnBSk33DnngkQSp-kK-Hsfv4ow6hqMLAA"
+    let folder_id = "b1gllin8jcku7jtu772i"
     private var timer: Timer?
     weak var vc: ResultTextChange?
 //    var translatedText: String
@@ -40,8 +40,8 @@ class RequestManager {
         let parameters = [
             "folder_id" : self.folder_id,
             "texts" : [vc?.getSourceText()],
-            "sourceLanguageCode" : vc?.getSourceLanguages() ?? "en",
-            "targetLanguageCode" : vc?.getResultLanguages() ?? "ru"
+            "sourceLanguageCode" : vc?.getSourceLanguage() ?? "en",
+            "targetLanguageCode" : vc?.getResultLanguage() ?? "ru"
             ] as [String : Any]
         guard let json = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
             print("ERROR JSON")
@@ -58,7 +58,8 @@ class RequestManager {
     
     @objc private func requestAPI(timer: Timer) {
         guard let request = createRequest(),
-            timer.userInfo as? String == vc?.getSourceText()
+            let string = timer.userInfo as? String,
+            string == vc?.getSourceText()
             else { return }
         
         let session = URLSession.shared
@@ -74,7 +75,9 @@ class RequestManager {
 //            }
             if let jsonResult = try? JSONDecoder().decode(Translations.self, from: data) {
                 DispatchQueue.main.async {
-                    self.vc?.setResultText(resultLanguage: jsonResult.translations.first!.text)
+                    if string == self.vc?.getSourceText() {
+                        self.vc?.setResultText(resultLanguage: jsonResult.translations.first!.text)
+                    }
                 }
 //                print(jsonResult)
             } else {

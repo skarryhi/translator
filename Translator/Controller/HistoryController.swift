@@ -77,7 +77,6 @@ class HistoryController: UITableViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        print(translations.count)
         let alert = UIAlertController(title: "Delete", message: "Do you whant to delete all words?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
             for item in translations {

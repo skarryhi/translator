@@ -15,9 +15,10 @@ protocol LanguageCurrentDelegate: class {
 
 protocol ResultTextChange: class {
     func setResultText(resultLanguage: String)
-    func getSourceLanguages() -> String
-    func getResultLanguages() -> String
+    func getSourceLanguage() -> String
+    func getResultLanguage() -> String
     func getSourceText() -> String
+    func setSourceText(resultLanguage: String)
 }
 
 class ViewController: UIViewController {
@@ -40,14 +41,19 @@ class ViewController: UIViewController {
         self.sourceText.delegate = self
         self.translatedText.textColor = .darkGray
         
+        placeholder.vc = self as ResultTextChange
         setTextPlaceholder()
         setButtonsLanguages()
+        
+        sourseLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
+        resultLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
     }
 
     // MARK: - Placeholder
     
     private func setTextPlaceholder() {
         self.sourceText.textColor = .gray
+        self.placeholder.language = self.languageManager.sourceLanguageISO
         self.sourceText.text = placeholder.text
         placeholder.isOn = true
     }
@@ -57,9 +63,10 @@ class ViewController: UIViewController {
     
     private func setButtonsLanguages() {
         sourseLanguageButton.setTitle(languageManager.sourceLanguageText, for: .normal)
-        sourseLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
         resultLanguageButton.setTitle(languageManager.resultLanguageText, for: .normal)
-        resultLanguageButton.addTarget(self, action: #selector(tapedButton(button :)), for: .touchUpInside)
+        if placeholder.isOn == true {
+            setTextPlaceholder()
+        }
     }
     
     @objc private func tapedButton(button : UIButton) {
@@ -82,6 +89,9 @@ class ViewController: UIViewController {
             return
         }
         requestManager.timerRequest()
+        if placeholder.isOn == true {
+            setTextPlaceholder()
+        }
     }
     
     // MARK: - Core Data
@@ -113,10 +123,11 @@ extension ViewController: LanguageCurrentDelegate {
 }
 
 extension ViewController: ResultTextChange {
-    func getSourceLanguages() -> String { return self.languageManager.sourceLanguageISO }
-    func getResultLanguages() -> String { return self.languageManager.resultLanguageISO }
+    func getSourceLanguage() -> String { return self.languageManager.sourceLanguageISO }
+    func getResultLanguage() -> String { return self.languageManager.resultLanguageISO }
     func getSourceText() -> String { return self.sourceText.text }
     func setResultText(resultLanguage: String) { self.translatedText.text = resultLanguage }
+    func setSourceText(resultLanguage: String) { self.sourceText.text = resultLanguage}
 }
 
 // MARK: - TextChanged
